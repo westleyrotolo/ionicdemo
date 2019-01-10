@@ -1,5 +1,7 @@
 {
   "name": "ionicommerce",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
