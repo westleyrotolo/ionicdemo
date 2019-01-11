@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FakeData} from "../../viewmodel/FakeData";
 import {Category} from "../../model/Category";
-import {ProductsPage} from "../products/products";
 import {Product} from "../../model/Product";
+import {PrestaRest} from "../../services/presta.service";
+import {assertNumber} from "@angular/core/src/render3/assert";
+import {ProductPage} from "../product/product";
 
 /**
  * Generated class for the CategoriesPage page.
@@ -18,20 +19,60 @@ import {Product} from "../../model/Product";
   templateUrl: 'categories.html',
 })
 export class CategoriesPage {
+  products : Array<Product>;
   categories: Array<Category>;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  subscription: any;
+  subscriptionProducts: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _prestaRest: PrestaRest) {
 
   }
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriesPage');
-    this.categories = FakeData.Categories;
+    const _category_id = this.navParams.get('id');
+    const _p_id = this.navParams.get('p_id');
+    this.categories = new Array<Category>();
+    this.subscription = this._prestaRest.getCategories(_category_id).subscribe(
+      (_data) => {
+        this.categories = _data.categories;
+        console.log('subscription: ', _data);
+        if (_p_id != null){
+          this.subscriptionProducts = this._prestaRest.getProducts({id: _p_id}).subscribe(
+            (_products) => {
+              console.log('subscribtion: ', _products);
+              if (_products.products != null) {
+                _products.products.forEach(x => x.description_short = x.description_short.replace(/<\/?[^>]+(>|$)/g, ''));
+                this.products = _products.products;
+                console.log(this.products);
+              }
+            }
+          );
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
-
+  ionViewDidLeave() {
+    if (this.subscription!=null)
+      this.subscription.unsubscribe();
+    if (this.subscriptionProducts != null)
+      this.subscriptionProducts.unsubscribe();
+  }
   itemClicked(item: Category) {
     console.log(item);
-    let items: Array<Product> = FakeData.Products.filter((value, index) => value.categoryId == item.ID);
-    this.navCtrl.push(ProductsPage, {'products' : items});
+    let p_id: string = '';
+    console.log('def',item.associations.products);
+    item.associations.products.forEach((x)=> p_id+=''+x.id+'|');
+    console.log('tt', p_id);
+    this.navCtrl.push( CategoriesPage, {'id': item.id, 'p_id' : p_id});
+
+  }
+
+  itemProductClicked(item: Product) {
+    console.log('itemProductClicked');
+    this.navCtrl.push( ProductPage , {id: item.id});
+
   }
 }

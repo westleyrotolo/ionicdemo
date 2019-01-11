@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Product} from "../../model/Product";
+import {PrestaRest} from "../../services/presta.service";
 
 /**
  * Generated class for the ProductPage page.
@@ -15,13 +16,29 @@ import {Product} from "../../model/Product";
   templateUrl: 'product.html',
 })
 export class ProductPage {
-  product: Product;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.product = navParams.get('product');
+  product: Product = new Product();
+
+  subscription: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private _prestaRest: PrestaRest) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductPage');
-  }
+    const id = this.navParams.get('id');
+    this._prestaRest.getProduct(id).subscribe(
+      (_data) => {
+        this.product = _data.products[0];
+        this.product.description = this.product.description.replace(/<\/?[^>]+(>|$)/g, '');
+        this.product.price = +this.product.price.toString().replace(/0{0,2}$/, "");
 
+    },
+    error => {
+        console.log(error);
+    });
+
+  }
+  ionViewDidLeave() {
+    if (this.subscription != null)
+      this.subscription.unsubscribe();
+  }
 }

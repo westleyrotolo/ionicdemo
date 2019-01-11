@@ -14,7 +14,18 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let category of categories" (click)="itemClicked(category)">{{category.label}}</button>
-  </ion-list>
+  <ion-item-group>
+    <ion-item-divider color="light" [hidden]="!(categories !=null)">
+      Categorie
+    </ion-item-divider>
+      <button ion-item *ngFor="let category of categories" (click)="itemClicked(category)">{{category.name}}</button>
+    <ion-item-divider color="light">Prodotti</ion-item-divider>
+      <ion-item *ngFor="let product of products" (click)="itemProductClicked(product)">
+        <ion-thumbnail item-start>
+          <presta-image [resource]="'products'" [resourceID]="product.id" [imageID]="product.id_default_image" [size]="'small'"></presta-image>
+        </ion-thumbnail>
+        <h4>{{product.name}}</h4>
+        <p text-wrap>{{product.description_short}}</p>
+      </ion-item>
+   </ion-item-group>
 </ion-content>

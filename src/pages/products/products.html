@@ -14,7 +14,28 @@
 
 
 <ion-content padding>
+  <ion-content>
+    <ion-item-group>
+      <ion-item-divider color="light">Categorie ></ion-item-divider>
+      <button ion-item *ngFor="let product of Products" (click)="itemClicked(product)">{{product.name}}</button>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider color="light">Prodotti >
+        <ion-card>
+          <img src="img/nin-live.png"/>
+          <ion-card-content>
+            <ion-card-title>
+              Nine Inch Nails Live
+            </ion-card-title>
+            <p>
+              The most popular industrial group ever, and largely
+              responsible for bringing the music to a mass audience.
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-item-divider>
+    </ion-item-group>
+  </ion-content>
   <ion-list>
-    <button ion-item *ngFor="let product of Products" (click)="itemClicked(product)">{{product.name}}</button>
   </ion-list>
 </ion-content>

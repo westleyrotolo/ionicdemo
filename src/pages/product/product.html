@@ -14,19 +14,18 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <img [src]="product.image"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{product.name}}
-      </ion-card-title>
-      <p>
-        Prezzo: {{product.price}}€ 
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tristique et sapien vel molestie. Donec vitae scelerisque mi, nec mollis purus. Ut a nunc hendrerit, vestibulum nunc sit amet, rhoncus lacus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer eu lobortis quam, eu mollis diam. Nullam eleifend ipsum et lacus malesuada mollis. Donec accumsan nunc eget neque aliquet venenatis. Maecenas at enim sed sem viverra sollicitudin. Praesent tincidunt arcu a turpis efficitur, nec pretium urna faucibus. Nam congue posuere odio, sit amet varius orci mollis sed. Suspendisse vestibulum blandit cursus. Proin eget sollicitudin tortor.
-      </p>
-
-    </ion-card-content>
-  </ion-card>
+  <ion-slides pager style="height: 200px;" *ngIf="product.associations != null">
+    <ion-slide *ngFor="let img of product.associations.images" style="height: 200px;">
+      <presta-image [resource]="'products'" [resourceID]="product.id" [imageID]="img.id" [size]="'medium'"></presta-image>
+    </ion-slide>
+  </ion-slides>
+  <h3>
+    {{product.name}}
+  </h3>
+  <h4>
+    Prezzo: {{product.price}}€
+  </h4>
+    <p>
+      {{product.description}}
+    </p>
 </ion-content>
