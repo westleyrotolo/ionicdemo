@@ -60,12 +60,13 @@ export class CategoriesPage {
     if (this.subscriptionProducts != null)
       this.subscriptionProducts.unsubscribe();
   }
+  item() {
+
+  }
   itemClicked(item: Category) {
     console.log(item);
     let p_id: string = '';
-    console.log('def',item.associations.products);
     item.associations.products.forEach((x)=> p_id+=''+x.id+'|');
-    console.log('tt', p_id);
     this.navCtrl.push( CategoriesPage, {'id': item.id, 'p_id' : p_id});
 
   }

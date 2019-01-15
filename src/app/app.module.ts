@@ -15,6 +15,10 @@ import {ProductsPage} from "../pages/products/products";
 import {IonicStorageModule } from "@ionic/storage";
 import {PrestaConfiguration, PrestaModule, PrestaService} from "angular2-presta";
 import {PrestaRest} from "../services/presta.service";
+import {TabsPage} from "../pages/tabs/tabs";
+import {ComponentsModule} from "../components/components.module";
+import {ItemCategoryComponent} from "../components/item-category/item-category";
+import {CarouselComponent} from "../components/carousel/carousel";
 
 export const prestaConfiguration: PrestaConfiguration = {
   apiKey: 'IREGDXLEJPTAU2ADGUQN1XQ1L1KIX1HZ',
@@ -29,7 +33,10 @@ export const prestaConfiguration: PrestaConfiguration = {
     ListPage,
     CategoriesPage,
     ProductPage,
-    ProductsPage
+    ProductsPage,
+    TabsPage,
+    ItemCategoryComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,10 @@ export const prestaConfiguration: PrestaConfiguration = {
     ListPage,
     CategoriesPage,
     ProductPage,
-    ProductsPage
+    ProductsPage,
+    TabsPage,
+    ItemCategoryComponent,
+    CarouselComponent
   ],
   providers: [
     PrestaService,

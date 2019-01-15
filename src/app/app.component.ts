@@ -2,7 +2,7 @@ import {Component, OnDestroy, ViewChild} from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import {Observable} from "rxjs";
@@ -21,7 +21,7 @@ export class MyApp implements  OnDestroy{
 
   // List of products
 
-  rootPage: any = HomePage;
+  rootPage: any = TabsPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -31,7 +31,7 @@ export class MyApp implements  OnDestroy{
     console.log(platform);
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Home', component: TabsPage },
       { title: 'List', component: ListPage }
     ];
 

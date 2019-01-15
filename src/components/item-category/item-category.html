@@ -1,0 +1,8 @@
+<ion-card class="card-background-page card-elevation"  >
+  <presta-image class="background-image" [resource]="'categories'" [resourceID]="category.id"></presta-image>
+  <div class="card-title">{{category.name}}</div>
+
+  <div>
+    <ion-badge  class="card-badge">{{category.associations?.products?.length}}</ion-badge>
+  </div>
+</ion-card>

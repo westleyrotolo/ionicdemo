@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content padding>
- <button ion-button primary (click)="testNavigation($event)">Home</button>
-
+  <ion-list>
+    <item-category *ngFor="let category of categories" [category]="category" (click)="itemClicked(category)"></item-category>
+  </ion-list>
 </ion-content>
