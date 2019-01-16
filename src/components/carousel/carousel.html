@@ -1,5 +1,6 @@
-<ion-slides pager>
-    <ion-slide style="" *ngFor="let category of categories">
-      <item-category [category]="category" (click)="categoryClick(category)"></item-category>
+
+<ion-slides [style.height.px]="height+50" [slidesPerView]="slidePerView+.1" [parallax]="true" [pager]="categories?.length > slidePerView" >
+    <ion-slide  *ngFor="let category of categories">
+      <item-category [height]="height" [category]="category" (click)="categoryClick(category)"></item-category>
     </ion-slide>
 </ion-slides>

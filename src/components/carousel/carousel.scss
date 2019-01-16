@@ -1,5 +1,12 @@
 carousel {
   ion-slides {
-    height: 200px;
+  }
+  .swiper-pagination {
+    padding-top: 9px;
+    bottom: 0;
+    .swiper-pagination-bullet {
+      background: #333333;
+      margin: 0 3px;
+    }
   }
 }

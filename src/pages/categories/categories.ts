@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Category} from "../../model/Category";
 import {Product} from "../../model/Product";
 import {PrestaRest} from "../../services/presta.service";
-import {assertNumber} from "@angular/core/src/render3/assert";
 import {ProductPage} from "../product/product";
 
 /**
@@ -23,16 +22,17 @@ export class CategoriesPage {
   categories: Array<Category>;
   subscription: any;
   subscriptionProducts: any;
+  category_id : number ;
   constructor(public navCtrl: NavController, public navParams: NavParams, private _prestaRest: PrestaRest) {
+    this.category_id = this.navParams.get('id');
 
   }
 
 
   ionViewDidLoad() {
-    const _category_id = this.navParams.get('id');
     const _p_id = this.navParams.get('p_id');
     this.categories = new Array<Category>();
-    this.subscription = this._prestaRest.getCategories(_category_id).subscribe(
+    this.subscription = this._prestaRest.getCategories(this.category_id).subscribe(
       (_data) => {
         this.categories = _data.categories;
         console.log('subscription: ', _data);

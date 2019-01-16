@@ -1,0 +1,5 @@
+<ion-card class="card-elevation">
+  <div padding class="card-title">{{product.name}}</div>
+  <presta-image [resource]="'products'" [resourceID]="product.id" [imageID]="product.id_default_image" [size]="'large'"></presta-image>
+  <div padding class="card-subtitle">{{product.description_short}}</div>
+</ion-card>

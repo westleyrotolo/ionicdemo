@@ -31,7 +31,8 @@ export class HomePage implements  OnInit, OnChanges{
   itemClicked(item: Category) {
     console.log(item);
     let p_id: string = '';
-    item.associations.products.forEach((x)=> p_id+=''+x.id+'|');
+    if (item.associations && item.associations.products)
+        item.associations.products.forEach((x)=> p_id+=''+x.id+'|');
     this.navCtrl.push( CategoriesPage, {'id': item.id, 'p_id' : p_id});
 
   }

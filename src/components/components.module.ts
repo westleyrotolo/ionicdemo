@@ -5,16 +5,19 @@ import {PrestaImageComponent} from "angular2-presta";
 import {MyApp} from "../app/app.component";
 import {IonicModule} from "ionic-angular";
 import {BrowserModule} from "@angular/platform-browser";
+import { ItemProductComponent } from './item-product/item-product';
 
 @NgModule({
 	declarations: [
     CarouselComponent,
     ItemCategoryComponent,
-  PrestaImageComponent],
+  PrestaImageComponent,
+    ItemProductComponent],
 	imports: [IonicModule, BrowserModule],
 	exports: [
     CarouselComponent,
     ItemCategoryComponent,
-  PrestaImageComponent]
+  PrestaImageComponent,
+    ItemProductComponent]
 })
 export class ComponentsModule {}

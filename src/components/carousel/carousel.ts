@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Category} from "../../model/Category";
+import {interpolateParams} from "@angular/animations/browser/src/util";
 
 /**
  * Generated class for the CarouselComponent component.
@@ -12,7 +13,11 @@ import {Category} from "../../model/Category";
   templateUrl: 'carousel.html'
 })
 export class CarouselComponent {
+  @Input()
+  slidePerView: number;
 
+  @Input()
+  height: number = 150;
   @Input()
   categories: Category[];
 
@@ -24,5 +29,4 @@ export class CarouselComponent {
   }
   constructor() {
   }
-
 }

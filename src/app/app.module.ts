@@ -19,6 +19,7 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {ComponentsModule} from "../components/components.module";
 import {ItemCategoryComponent} from "../components/item-category/item-category";
 import {CarouselComponent} from "../components/carousel/carousel";
+import {ItemProductComponent} from "../components/item-product/item-product";
 
 export const prestaConfiguration: PrestaConfiguration = {
   apiKey: 'IREGDXLEJPTAU2ADGUQN1XQ1L1KIX1HZ',
@@ -36,7 +37,8 @@ export const prestaConfiguration: PrestaConfiguration = {
     ProductsPage,
     TabsPage,
     ItemCategoryComponent,
-    CarouselComponent
+    CarouselComponent,
+    ItemProductComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ export const prestaConfiguration: PrestaConfiguration = {
     ProductsPage,
     TabsPage,
     ItemCategoryComponent,
-    CarouselComponent
+    CarouselComponent,
+    ItemProductComponent,
   ],
   providers: [
     PrestaService,

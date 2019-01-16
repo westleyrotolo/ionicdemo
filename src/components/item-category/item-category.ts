@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ElementRef, ViewChild} from '@angular/core';
 import { Category } from '../../model/Category';
 /**
  * Generated class for the ItemCategoryComponent component.
@@ -11,9 +11,12 @@ import { Category } from '../../model/Category';
   templateUrl: 'item-category.html'
 })
 export class ItemCategoryComponent {
+  @ViewChild('card')
+  card: ElementRef;
   @Input()
   category: Category;
-  text: string;
+  @Input()
+  height: number = 100;
 
   constructor() {
     console.log('Component item-category', this.category);

@@ -12,16 +12,12 @@
 
 </ion-header>
 
-
-<ion-content padding>
-  <carousel [categories]="categories" (categoryClicked)="itemClicked($event)"  [hidden]="!(categories !=null)"></carousel>
-  <ion-list>
-    <ion-item *ngFor="let product of products" (click)="itemProductClicked(product)">
-      <ion-thumbnail item-start>
-        <presta-image [resource]="'products'" [resourceID]="product.id" [imageID]="product.id_default_image" [size]="'small'"></presta-image>
-      </ion-thumbnail>
-      <h4>{{product.name}}</h4>
-      <p text-wrap>{{product.description_short}}</p>
-    </ion-item>
-  </ion-list>
+<ion-content >
+  <presta-image [resource]="'categories'" [resourceID]="category_id" style="position: fixed;  top: 0; left: 0; overflow: hidden; height: 200px;" ></presta-image>
+  <div padding>
+  <carousel [height]="150" [slidePerView]="2" [categories]="categories" (categoryClicked)="itemClicked($event)"  [hidden]="!(categories !=null)"></carousel>
+   <ion-list >
+     <item-product *ngFor="let product of products" [product]="product"></item-product>
+   </ion-list>
+  </div>
 </ion-content>

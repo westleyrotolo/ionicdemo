@@ -1,0 +1,21 @@
+item-product {
+  ion-card {
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
+  }
+  .card-title {
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #333333;
+  }
+  .card-subtitle {
+    font-size:  1em;
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+  }
+  presta-image img {
+    max-height: 200px;
+  }
+}

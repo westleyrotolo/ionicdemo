@@ -8,7 +8,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <item-category *ngFor="let category of categories" [category]="category" (click)="itemClicked(category)"></item-category>
-  </ion-list>
+  <div class="home-title">Categories</div>
+  <carousel [slidePerView]="1" [height]="150" (categoryClicked)="itemClicked($event)" [categories]="categories"></carousel>
+  <div class="home-title">Featured</div>
+  <carousel [slidePerView]="3" [height]="150" [categories]="categories"></carousel>
+
 </ion-content>

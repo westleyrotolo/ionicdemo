@@ -21,7 +21,7 @@ export class MyApp implements  OnDestroy{
 
   // List of products
 
-  rootPage: any = TabsPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -31,7 +31,7 @@ export class MyApp implements  OnDestroy{
     console.log(platform);
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: TabsPage },
+      { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
     ];
 
