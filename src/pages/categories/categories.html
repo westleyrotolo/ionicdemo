@@ -14,7 +14,7 @@
 
 <ion-content >
   <presta-image [resource]="'categories'" [resourceID]="category_id" style="position: fixed;  top: 0; left: 0; overflow: hidden; height: 200px;" ></presta-image>
-  <div padding>
+  <div padding >
   <carousel [height]="150" [slidePerView]="2" [categories]="categories" (categoryClicked)="itemClicked($event)"  [hidden]="!(categories !=null)"></carousel>
    <ion-list >
      <item-product *ngFor="let product of products" [product]="product"></item-product>

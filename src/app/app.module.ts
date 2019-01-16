@@ -24,7 +24,7 @@ import {ItemProductComponent} from "../components/item-product/item-product";
 export const prestaConfiguration: PrestaConfiguration = {
   apiKey: 'IREGDXLEJPTAU2ADGUQN1XQ1L1KIX1HZ',
   imageApiKey: 'IREGDXLEJPTAU2ADGUQN1XQ1L1KIX1HZ', // ApiKey only with images GET permissions for security reasons
-  shopUrl: 'api/'
+  shopUrl: 'http://insuredshipping.prestashoplab.com/api/'
 };
 
 @NgModule({
