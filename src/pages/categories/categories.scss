@@ -2,15 +2,25 @@ page-categories {
   .hidden {
     display: none;
   }
-  .container {
-    position: relative;
-    padding: 20px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
+  .header-image {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+    width: 100%;
+    position:fixed;
+    top:0;
+    left:0;
+    object-fit: cover;
+    height: 400px;
+
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  .header-image img {
+    object-fit: cover;
+  }
+  [ion-fixed] {
+
+    width: 100%;
   }
 }
 

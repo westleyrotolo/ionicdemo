@@ -1,5 +1,7 @@
-<ion-card [style.height.px]="height" class="card-background-page card-elevation"  >
-  <presta-image class="background-image" [resource]="'categories'" [resourceID]="category.id"></presta-image>
+<ion-card [style.height.px]="height" class="card-background-page card-elevation"   >
+  <presta-image  class="background-image" [resource]="'categories'" [resourceID]="category.id">
+  </presta-image>
+  <div [style.opacity]="opacity"  [style.height.px]="height" style="background-color: black;  width: 100%;"></div>
   <div class="card-title">{{category.name}}</div>
 
   <div>

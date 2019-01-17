@@ -9,15 +9,24 @@
   <ion-navbar>
     <ion-title>Categories</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-<ion-content >
-  <presta-image [resource]="'categories'" [resourceID]="category_id" style="position: fixed;  top: 0; left: 0; overflow: hidden; height: 200px;" ></presta-image>
-  <div padding >
-  <carousel [height]="150" [slidePerView]="2" [categories]="categories" (categoryClicked)="itemClicked($event)"  [hidden]="!(categories !=null)"></carousel>
-   <ion-list >
-     <item-product *ngFor="let product of products" [product]="product"></item-product>
-   </ion-list>
+<ion-content (ionScroll)="scrollHandler($event)" >
+
+  <div ion-fixed [style.transform]="'translate3d(0,'+offsetY+'px,0)'" >
+
+    <presta-image class="header-image" [resource]="'categories'" [resourceID]="category_id">
+
+    </presta-image>
+    <div class="header-image" [style.opacity]=".5"  style="background-color: black;  width: 100%;"></div>
+    <div [style.transform]="'translate3d(0,'+(220 +offsetY*0.05)+'px,0)'" >
+    <carousel [heightSlider]="50"  [opacity]="0" [height]="150" [slidePerView]="2" [categories]="categories" (categoryClicked)="itemClicked($event)"  [hidden]="!(categories !=null)"></carousel>
+    </div>
   </div>
+
+  <ion-list padding [style.transform]="'translate3d(0,400px,0)'" >
+      <item-product (click)="itemProductClicked($event)" *ngFor="let product of products" [product]="product"></item-product>
+    </ion-list>
 </ion-content>
+
+<!-- [ngStyle]="{'filter': 'blur('+opacityCarousel*2+'px)'}"-->

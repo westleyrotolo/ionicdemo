@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ScrollEvent} from 'ionic-angular';
 import {Category} from "../../model/Category";
 import {Product} from "../../model/Product";
 import {PrestaRest} from "../../services/presta.service";
 import {ProductPage} from "../product/product";
+import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 /**
  * Generated class for the CategoriesPage page.
@@ -16,6 +17,7 @@ import {ProductPage} from "../product/product";
 @Component({
   selector: 'page-categories',
   templateUrl: 'categories.html',
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class CategoriesPage {
   products : Array<Product>;
@@ -23,7 +25,13 @@ export class CategoriesPage {
   subscription: any;
   subscriptionProducts: any;
   category_id : number ;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private _prestaRest: PrestaRest) {
+  offsetY: number =0;
+  heightSlider: number = 50;
+  heightSlide : number = 150;
+  offsetYTrans: string = 'translateY(0)';
+  offsetY2: any = 'translate3d(0,0,0)';
+  parallax_styles: object;
+  constructor(private ref: ChangeDetectorRef, public navCtrl: NavController, public navParams: NavParams, private _prestaRest: PrestaRest, private _sanitizer:DomSanitizer) {
     this.category_id = this.navParams.get('id');
 
   }
@@ -53,6 +61,7 @@ export class CategoriesPage {
         console.log(error);
       }
     )
+    this.ref.detectChanges();
   }
   ionViewDidLeave() {
     if (this.subscription!=null)
@@ -74,6 +83,19 @@ export class CategoriesPage {
   itemProductClicked(item: Product) {
     console.log('itemProductClicked');
     this.navCtrl.push( ProductPage , {id: item.id});
-
   }
+
+  MAXSCROLL: number =  220 ;
+  scrollHandler($event) {
+    console.log($event);
+    let temp = this.offsetY * (-1) /this.MAXSCROLL;
+   this.offsetY =-Math.min($event.scrollTop*.56, this.MAXSCROLL);
+   this.opacityCarousel = Math.min(temp, .99);
+   this.heightSlide =150- temp * 100;
+   console.log(this.heightSlide);
+   console.log(this.opacityCarousel);
+    console.log(this.offsetY);
+    this.ref.detectChanges();
+  }
+  opacityCarousel: number;
 }

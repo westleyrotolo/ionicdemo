@@ -18,6 +18,8 @@ export class ItemCategoryComponent {
   @Input()
   height: number = 100;
 
+  @Input()
+  opacity: number = 0;
   constructor() {
     console.log('Component item-category', this.category);
   }

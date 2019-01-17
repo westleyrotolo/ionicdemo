@@ -19,8 +19,12 @@ export class CarouselComponent {
   @Input()
   height: number = 150;
   @Input()
+  heightSlider: number=50;
+  @Input()
   categories: Category[];
 
+  @Input()
+  opacity: number  = 0;
   @Output() categoryClicked: EventEmitter<Category> = new EventEmitter<Category>();
 
   categoryClick(c: Category) {
