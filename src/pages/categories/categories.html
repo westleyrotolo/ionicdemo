@@ -25,7 +25,7 @@
   </div>
 
   <ion-list padding [style.transform]="'translate3d(0,400px,0)'" >
-      <item-product (click)="itemProductClicked($event)" *ngFor="let product of products" [product]="product"></item-product>
+      <item-product *ngFor="let product of products"  (click)="itemProductClicked(product)" [product]="product"></item-product>
     </ion-list>
 </ion-content>
 
